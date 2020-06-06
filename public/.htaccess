@@ -1,0 +1,11 @@
+#multiviews would let us call index.php as index
+Options -Multiviews
+RewriteEngine On
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !=d
+RewriteCond %{REQUEST_FILENAME} !=f
+RewriteCond %{REQUEST_URI} !\.(?:css|js)$ [NC]
+
+#send string to parseUrl in App.php
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
