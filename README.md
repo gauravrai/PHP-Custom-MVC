@@ -4,19 +4,19 @@ This project is to meet minimal requirements. Any value addition is welcomed.
 
 Domain or subdomain must point the /public/index.php
 
-##Routes
+## Routes
 /{controllerName}/{methodName}/{prameter1}/{parameter2}...
 
 
-##API
+## API
 /api/login
 /api/register
 /api/profile/{userid}
 
 
-##Encryption/Decryption
+## Encryption/Decryption
 /app/core/Helper
 
-##Vue 
+## Vue 
 /public/assets/js/main.js
 
