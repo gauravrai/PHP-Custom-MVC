@@ -10,7 +10,9 @@ Domain or subdomain must point the /public/index.php
 
 ## API
 /api/login
+
 /api/register
+
 /api/profile/{userid}
 
 
