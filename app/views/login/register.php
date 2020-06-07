@@ -7,6 +7,14 @@
             <h1 class="text-center login-title">Register to continue</h1>
             <div class="account-wall">
                 <div class="alert alert-info" v-show="html.showMessage" style="display: none" id="">{{html.message}}</div>
+                    
+                <ul v-if="errors.length" class="alert alert-danger">
+                    <li v-for="error in errors">
+                    {{ error }}
+                    </li>
+                </ul>
+                    
+                
                 <form class="form-signin" method="post">
                     <input type="text" v-model="input.username" class="form-control" placeholder="Username" required autofocus>
                     <br>

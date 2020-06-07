@@ -58,7 +58,8 @@ class Api extends Controller
 		$request = $this->getRawRequest();
 		
 		if($request->username == '' || $request->password == '' || $request->email == ''){
-			$this->sendResponse(["Please fill the required fields"], 500);
+			$this->sendResponse(["Please fill the required fields", ['error'=>1]]);
+			exit;
 		}
 		
 		
