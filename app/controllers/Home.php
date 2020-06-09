@@ -16,8 +16,4 @@ class Home extends Controller
 		$data['user'] = $this->user->getUser();
 		$this->view('home/index', $data);
 	}
-
-	public function login(){
-
-	}
 }

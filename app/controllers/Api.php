@@ -21,7 +21,7 @@ class Api extends Controller
 	}
 	public function profile($id=0){
 		$this->setJson();
-		//if(Helper::isLoggedIn()){
+		if(Helper::isLoggedIn()){
 			$user = $this->model('User');
 			$result = $user->getUser($id);
 			$array = [
@@ -31,7 +31,7 @@ class Api extends Controller
 				'contact' => $result[0]['contact'],
 			];
 			$this->sendResponse(["Record Found", $array]);
-		//}
+		}
 	}
 	public function login(){
 		$request = $this->getRawRequest();
@@ -61,7 +61,6 @@ class Api extends Controller
 			$this->sendResponse(["Please fill the required fields", ['error'=>1]]);
 			exit;
 		}
-		
 		
 		$user = $this->model('User');
 		$result = $user->create([

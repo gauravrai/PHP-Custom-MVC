@@ -8,19 +8,23 @@
 
 class App
 {
-	protected $controller = 'user';//default controller
+	protected $controller = 'User';//default controller
 	protected $method = 'index';//default method
 	protected $params = []; //empty array for params
 	
 	public function __construct(){
 		$url = $this->parseUrl();	
 		
-		if(file_exists('../app/controllers/'.ucfirst($url[0]).'.php')){//if controller file exists
+		$file_path = $_SERVER['DOCUMENT_ROOT'] . '/../app/controllers/'.ucfirst($url[0]).'.php';
+		if(file_exists($file_path) && $url[0]!=''){//if controller file exists
 			$this->controller = $url[0];
 			unset($url[0]);//remove controller name
 		}
+		else{
+			$file_path = $_SERVER['DOCUMENT_ROOT'] . '/../app/controllers/'.$this->controller.'.php';
+		}
 
-		require_once('../app/controllers/' . $this->controller . '.php');
+		require_once($file_path);
 
 		$this->controller = new $this->controller;//create an object to be passed later in call_user_func_array
 
@@ -40,6 +44,7 @@ class App
 	//Parse usrl by exploding and sanitizing, .ie controller, methods and parameters
 	public function parseUrl(){
 		//GET works because of .htaccess file
+		
 		if(isset($_GET['url'])){
 			//trim this whitespace and if there is forward slash remove that too
 			return $url = explode("/", filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));

@@ -15,7 +15,6 @@ Domain or subdomain must point the /public/index.php
 
 /api/profile/{userid}
 
-
 ## Encryption/Decryption
 /app/core/Helper
 
